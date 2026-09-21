@@ -133,4 +133,4 @@ Built with AI-assisted development. The design decisions, data validation and an
 
 ---
 
-**Muhammad Zia Ul Haq** · Senior Data Analyst · PL-300 certified
+**Muhammad Zia Ul Haq** · Senior BI & Insights Analyst

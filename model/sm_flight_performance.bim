@@ -1,0 +1,1969 @@
+{
+  "name": "sm_flight_performance",
+  "id": "<SEMANTIC_MODEL_ID>",
+  "compatibilityLevel": 1606,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "dim_airline",
+        "lineageTag": "cfc9ac96-3a63-4090-8a7f-21a4efce841c",
+        "sourceLineageTag": "[dbo].[dim_airline]",
+        "columns": [
+          {
+            "name": "airline_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "isKey": true,
+            "sourceColumn": "airline_key",
+            "formatString": "0",
+            "lineageTag": "3472018d-d099-4bff-a529-603580aad100",
+            "sourceLineageTag": "airline_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airline_code",
+            "dataType": "string",
+            "sourceColumn": "airline_code",
+            "lineageTag": "31c45ad8-651c-45f6-b317-6002540b11ed",
+            "sourceLineageTag": "airline_code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airline_name",
+            "dataType": "string",
+            "sourceColumn": "airline_name",
+            "lineageTag": "5c3a4037-bbc8-4684-bb30-c45149d98bbe",
+            "sourceLineageTag": "airline_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airline_label",
+            "dataType": "string",
+            "sourceColumn": "airline_label",
+            "lineageTag": "6c22f460-7caa-4c09-a4ae-75653a062298",
+            "sourceLineageTag": "airline_label",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_name_from_code",
+            "dataType": "boolean",
+            "sourceColumn": "is_name_from_code",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "daefb905-23ea-43b7-a058-c5d1393e1e69",
+            "sourceLineageTag": "is_name_from_code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "first_flight_date",
+            "dataType": "dateTime",
+            "sourceColumn": "first_flight_date",
+            "formatString": "General Date",
+            "lineageTag": "609c2a5c-bc7f-4868-bd07-cf28df8427b1",
+            "sourceLineageTag": "first_flight_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "last_flight_date",
+            "dataType": "dateTime",
+            "sourceColumn": "last_flight_date",
+            "formatString": "General Date",
+            "lineageTag": "df833f95-af9b-4fe7-84e6-a4ed2ae31c48",
+            "sourceLineageTag": "last_flight_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "months_reported",
+            "dataType": "int64",
+            "sourceColumn": "months_reported",
+            "formatString": "0",
+            "lineageTag": "c08444a7-a123-4ae1-acf8-0b12b8bca451",
+            "sourceLineageTag": "months_reported",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "reports_full_period",
+            "dataType": "boolean",
+            "sourceColumn": "reports_full_period",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "5d9de45a-7ace-4dbf-af19-e0a75916236c",
+            "sourceLineageTag": "reports_full_period",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_airline",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dim_airline",
+              "expressionSource": "DirectLake - lh_gold",
+              "schemaName": "dbo"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "lineageTag": "6f8857f9-1f76-4c44-b729-b4d647dfe6c7",
+        "sourceLineageTag": "[dbo].[dim_date]",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "date_key",
+            "formatString": "0",
+            "lineageTag": "24a94a9a-2f91-432e-9953-21ddfcf7f41e",
+            "sourceLineageTag": "date_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "date",
+            "formatString": "Short Date",
+            "lineageTag": "00cf5d8d-6b00-401c-8a79-fc8fad6c1e82",
+            "sourceLineageTag": "date",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "formatString": "0",
+            "lineageTag": "8520e567-d464-4f7f-856d-9e9a7259be56",
+            "sourceLineageTag": "year",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter",
+            "formatString": "0",
+            "lineageTag": "d780911b-4c26-4a5c-aa25-5b72d2dbb42c",
+            "sourceLineageTag": "quarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "quarter_label",
+            "dataType": "string",
+            "sourceColumn": "quarter_label",
+            "lineageTag": "28405867-6c80-4ab1-9012-00382fa7dd9d",
+            "sourceLineageTag": "quarter_label",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "formatString": "0",
+            "lineageTag": "b1c76081-6da0-4c8b-a1f0-92f3249ac125",
+            "sourceLineageTag": "month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "sortByColumn": "month",
+            "lineageTag": "4aba615f-7f4c-4301-b6c4-2352b0f7406c",
+            "sourceLineageTag": "month_name",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month_short",
+            "dataType": "string",
+            "sourceColumn": "month_short",
+            "sortByColumn": "month",
+            "lineageTag": "7ef37544-e998-4957-8908-6fd142037674",
+            "sourceLineageTag": "month_short",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "year_month",
+            "dataType": "string",
+            "sourceColumn": "year_month",
+            "sortByColumn": "year_month_sort",
+            "lineageTag": "4ea9026d-9f28-4ae5-a873-3d46bd75d3e9",
+            "sourceLineageTag": "year_month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month_year_label",
+            "dataType": "string",
+            "sourceColumn": "month_year_label",
+            "sortByColumn": "year_month_sort",
+            "lineageTag": "efad313e-12f8-458d-989e-5e50ae45ea62",
+            "sourceLineageTag": "month_year_label",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "year_month_sort",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "year_month_sort",
+            "formatString": "0",
+            "lineageTag": "8e21bec5-30f6-4629-b3e6-eeb91a2b8a54",
+            "sourceLineageTag": "year_month_sort",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month_start_date",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start_date",
+            "formatString": "General Date",
+            "lineageTag": "dec84ee9-b773-496d-a292-1b28006f3f89",
+            "sourceLineageTag": "month_start_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "day_of_month",
+            "dataType": "int64",
+            "sourceColumn": "day_of_month",
+            "formatString": "0",
+            "lineageTag": "3f238fe3-6428-4d59-b692-6df6cbb1ff0a",
+            "sourceLineageTag": "day_of_month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "day_of_week",
+            "dataType": "int64",
+            "sourceColumn": "day_of_week",
+            "formatString": "0",
+            "lineageTag": "e1a4b83f-7f43-4e9c-bec2-b3294200679a",
+            "sourceLineageTag": "day_of_week",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "day_name",
+            "dataType": "string",
+            "sourceColumn": "day_name",
+            "sortByColumn": "day_of_week",
+            "lineageTag": "ac604782-8b42-4391-820f-fcad19aa6467",
+            "sourceLineageTag": "day_name",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "day_short",
+            "dataType": "string",
+            "sourceColumn": "day_short",
+            "sortByColumn": "day_of_week",
+            "lineageTag": "e7f53ac0-9b5e-455d-977e-982540109770",
+            "sourceLineageTag": "day_short",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_weekend",
+            "dataType": "boolean",
+            "sourceColumn": "is_weekend",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "79519c9b-41bd-42bd-adca-225d656ed803",
+            "sourceLineageTag": "is_weekend",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "covid_period",
+            "dataType": "string",
+            "sourceColumn": "covid_period",
+            "sortByColumn": "covid_period_sort",
+            "lineageTag": "192588fb-a1a4-4d95-b8db-0c0ee4936457",
+            "sourceLineageTag": "covid_period",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "covid_period_sort",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "covid_period_sort",
+            "formatString": "0",
+            "lineageTag": "776e8228-d3ac-4704-921b-4acece8ecef7",
+            "sourceLineageTag": "covid_period_sort",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "has_flight_data",
+            "dataType": "boolean",
+            "sourceColumn": "has_flight_data",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "f95b3389-552d-4b43-a091-d9380bc2d0a5",
+            "sourceLineageTag": "has_flight_data",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dim_date",
+              "expressionSource": "DirectLake - lh_gold",
+              "schemaName": "dbo"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_airport",
+        "lineageTag": "0a2cecb3-c5c2-47cf-81a4-65802a513a53",
+        "sourceLineageTag": "[dbo].[dim_airport]",
+        "columns": [
+          {
+            "name": "airport_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "isKey": true,
+            "sourceColumn": "airport_key",
+            "formatString": "0",
+            "lineageTag": "89921ca7-4b5b-4c94-ba72-a8b0402cba9a",
+            "sourceLineageTag": "airport_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airport_code",
+            "dataType": "string",
+            "sourceColumn": "airport_code",
+            "lineageTag": "0e130a9f-c834-4955-aa0a-6a26acd8209a",
+            "sourceLineageTag": "airport_code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airport_name",
+            "dataType": "string",
+            "sourceColumn": "airport_name",
+            "lineageTag": "7fde0d3d-1ed1-4a33-969b-b99777201032",
+            "sourceLineageTag": "airport_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city",
+            "lineageTag": "776d0678-fc16-4d10-9fd5-482784448b0e",
+            "sourceLineageTag": "city",
+            "dataCategory": "City",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "state_code",
+            "dataType": "string",
+            "sourceColumn": "state_code",
+            "lineageTag": "65f07a34-ed26-4faf-8c8f-59b7fb9ea819",
+            "sourceLineageTag": "state_code",
+            "dataCategory": "StateOrProvince",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "city_state",
+            "dataType": "string",
+            "sourceColumn": "city_state",
+            "lineageTag": "b07c5d38-8e4d-4743-9564-13a68a9ca62d",
+            "sourceLineageTag": "city_state",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airport_label",
+            "dataType": "string",
+            "sourceColumn": "airport_label",
+            "lineageTag": "17e02a5e-527c-4d8a-977e-c4945979b268",
+            "sourceLineageTag": "airport_label",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_name_from_code",
+            "dataType": "boolean",
+            "sourceColumn": "is_name_from_code",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "671e85b2-dd14-4ecb-8095-8e5a1baea41f",
+            "sourceLineageTag": "is_name_from_code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "first_flight_date",
+            "dataType": "dateTime",
+            "sourceColumn": "first_flight_date",
+            "formatString": "General Date",
+            "lineageTag": "33220f75-2b57-474c-9aaa-b6715afc0dbf",
+            "sourceLineageTag": "first_flight_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "last_flight_date",
+            "dataType": "dateTime",
+            "sourceColumn": "last_flight_date",
+            "formatString": "General Date",
+            "lineageTag": "c3b5252a-0ff4-49d7-a7e9-715f4372452b",
+            "sourceLineageTag": "last_flight_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_airport",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dim_airport",
+              "expressionSource": "DirectLake - lh_gold",
+              "schemaName": "dbo"
+            }
+          }
+        ]
+      },
+      {
+        "name": "fact_flights",
+        "lineageTag": "84266adb-9720-4bf9-b645-b3f936135f7d",
+        "sourceLineageTag": "[dbo].[fact_flights]",
+        "columns": [
+          {
+            "name": "period_key",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "period_key",
+            "lineageTag": "bcbd0185-5351-4561-9e40-5cae45c851a9",
+            "sourceLineageTag": "period_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "date_key",
+            "formatString": "0",
+            "lineageTag": "1b7f768b-2723-42d2-9438-f21a5e83966f",
+            "sourceLineageTag": "date_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "airline_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "airline_key",
+            "formatString": "0",
+            "lineageTag": "7ba4d048-9569-4ad6-8a0a-0563f0ea84f3",
+            "sourceLineageTag": "airline_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "origin_airport_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "origin_airport_key",
+            "formatString": "0",
+            "lineageTag": "4c48e144-aba5-473b-bc62-e9e9fb90ced3",
+            "sourceLineageTag": "origin_airport_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dest_airport_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "dest_airport_key",
+            "formatString": "0",
+            "lineageTag": "6ab80b68-2928-4096-872d-03fce90f9876",
+            "sourceLineageTag": "dest_airport_key",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "flight_number",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "flight_number",
+            "lineageTag": "7833114a-abdd-43a1-be24-db60881926f9",
+            "sourceLineageTag": "flight_number",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "tail_number",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "tail_number",
+            "lineageTag": "16b630fa-20e9-481d-a5e2-4c08fdb8edf7",
+            "sourceLineageTag": "tail_number",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "flight_status",
+            "dataType": "string",
+            "sourceColumn": "flight_status",
+            "lineageTag": "1e96e6ec-a37a-421e-816a-2ac9549fd4a3",
+            "sourceLineageTag": "flight_status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "cancellation_reason",
+            "dataType": "string",
+            "sourceColumn": "cancellation_reason",
+            "lineageTag": "2d959069-8708-40f9-9fc0-6eb0fed54b86",
+            "sourceLineageTag": "cancellation_reason",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "scheduled_departure_hour",
+            "dataType": "int64",
+            "sourceColumn": "scheduled_departure_hour",
+            "formatString": "0",
+            "lineageTag": "8d9d64cc-da1c-41d6-a1af-6a0c2115345e",
+            "sourceLineageTag": "scheduled_departure_hour",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "scheduled_arrival_hour",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "scheduled_arrival_hour",
+            "formatString": "0",
+            "lineageTag": "36734d20-7af5-4992-9aa1-6e074ce8c982",
+            "sourceLineageTag": "scheduled_arrival_hour",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "scheduled_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "scheduled_flag",
+            "formatString": "0",
+            "lineageTag": "bbca188a-3497-4c84-b509-487f66c78a0e",
+            "sourceLineageTag": "scheduled_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "operated_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "operated_flag",
+            "formatString": "0",
+            "lineageTag": "a5a78cee-2e8d-429f-8053-c0e2bd209054",
+            "sourceLineageTag": "operated_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "cancelled_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "cancelled_flag",
+            "formatString": "0",
+            "lineageTag": "446a83b4-dd29-414b-aaba-0b840b5b8481",
+            "sourceLineageTag": "cancelled_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "diverted_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "diverted_flag",
+            "formatString": "0",
+            "lineageTag": "91fc04e3-93e9-4cf1-bd81-3d46373a57a0",
+            "sourceLineageTag": "diverted_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "delay_eligible_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "delay_eligible_flag",
+            "formatString": "0",
+            "lineageTag": "d28ac00b-3da7-4d6c-9326-a1cbb330c6b0",
+            "sourceLineageTag": "delay_eligible_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "on_time_arrival_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "on_time_arrival_flag",
+            "formatString": "0",
+            "lineageTag": "7f6802f5-fdcb-4f68-8a07-e5c7b3a2631a",
+            "sourceLineageTag": "on_time_arrival_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "arrival_delayed_15_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "arrival_delayed_15_flag",
+            "formatString": "0",
+            "lineageTag": "b2d675db-0b95-4009-82be-aa4ec3d34e9e",
+            "sourceLineageTag": "arrival_delayed_15_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "departure_delayed_15_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "departure_delayed_15_flag",
+            "formatString": "0",
+            "lineageTag": "95693714-e63a-4001-814a-2b79acdeaecb",
+            "sourceLineageTag": "departure_delayed_15_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "departure_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "departure_delay_min",
+            "formatString": "0",
+            "lineageTag": "b376e7ae-8d36-4c5f-b03a-ae2653bf3901",
+            "sourceLineageTag": "departure_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "departure_delay_nonneg_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "departure_delay_nonneg_min",
+            "formatString": "0",
+            "lineageTag": "7898b2e2-6860-4a95-a20c-a7ed37777b9a",
+            "sourceLineageTag": "departure_delay_nonneg_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "arrival_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "arrival_delay_min",
+            "formatString": "0",
+            "lineageTag": "8ae9d8a8-fb08-4476-bb99-ed41df4d1cac",
+            "sourceLineageTag": "arrival_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "arrival_delay_nonneg_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "arrival_delay_nonneg_min",
+            "formatString": "0",
+            "lineageTag": "dd9a5263-1dee-450a-82f1-9ae9f42e98c3",
+            "sourceLineageTag": "arrival_delay_nonneg_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "taxi_out_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "taxi_out_min",
+            "formatString": "0",
+            "lineageTag": "d9ff571e-fa3f-4623-b9ef-801ea77b4609",
+            "sourceLineageTag": "taxi_out_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "taxi_in_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "taxi_in_min",
+            "formatString": "0",
+            "lineageTag": "1cdc2a2c-307c-45a3-a615-60f4e571c3a8",
+            "sourceLineageTag": "taxi_in_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "scheduled_elapsed_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "scheduled_elapsed_min",
+            "formatString": "0",
+            "lineageTag": "7c1e78d2-6258-43b3-bb55-8128b71888aa",
+            "sourceLineageTag": "scheduled_elapsed_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "actual_elapsed_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "actual_elapsed_min",
+            "formatString": "0",
+            "lineageTag": "acacfc1f-aced-4650-9233-fb218330f3b8",
+            "sourceLineageTag": "actual_elapsed_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "air_time_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "air_time_min",
+            "formatString": "0",
+            "lineageTag": "de7f623f-7570-4acf-9fed-3474bbaf1244",
+            "sourceLineageTag": "air_time_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "distance_miles",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "distance_miles",
+            "formatString": "0",
+            "lineageTag": "72d8fdee-fc7c-4be8-a382-86012ffc4fc7",
+            "sourceLineageTag": "distance_miles",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "carrier_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "carrier_delay_min",
+            "formatString": "0",
+            "lineageTag": "c6e7c8d5-d7e1-4df9-ad41-043538c54b4a",
+            "sourceLineageTag": "carrier_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "weather_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "weather_delay_min",
+            "formatString": "0",
+            "lineageTag": "fb462529-b019-49c3-8832-80df8bfdb0fd",
+            "sourceLineageTag": "weather_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nas_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "nas_delay_min",
+            "formatString": "0",
+            "lineageTag": "3b30dc20-2d53-4dbb-82df-54651d684d93",
+            "sourceLineageTag": "nas_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "security_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "security_delay_min",
+            "formatString": "0",
+            "lineageTag": "4526d1b7-8985-4f47-94fc-f015bf92bab2",
+            "sourceLineageTag": "security_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "late_aircraft_delay_min",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "late_aircraft_delay_min",
+            "formatString": "0",
+            "lineageTag": "8d419612-ea51-46f6-9e5f-7ff78ee64601",
+            "sourceLineageTag": "late_aircraft_delay_min",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dq_extreme_delay_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "dq_extreme_delay_flag",
+            "formatString": "0",
+            "lineageTag": "d348b0a7-0134-4965-9ff9-2fdaec3fce71",
+            "sourceLineageTag": "dq_extreme_delay_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dq_security_code_2020_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "dq_security_code_2020_flag",
+            "formatString": "0",
+            "lineageTag": "f8e8662c-33c8-47d7-b0d2-b4e10a8290d1",
+            "sourceLineageTag": "dq_security_code_2020_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dq_missing_arrival_data_flag",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "dq_missing_arrival_data_flag",
+            "formatString": "0",
+            "lineageTag": "23b2d303-5a05-4b3f-8bda-3c531bd3a287",
+            "sourceLineageTag": "dq_missing_arrival_data_flag",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_silver_processed_at",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "_silver_processed_at",
+            "formatString": "General Date",
+            "lineageTag": "e078c9d4-7a59-4009-b984-72a19cb4d9f1",
+            "sourceLineageTag": "_silver_processed_at",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_gold_processed_at",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "_gold_processed_at",
+            "formatString": "General Date",
+            "lineageTag": "7a5bf0a6-a11d-4545-afe0-570a155214eb",
+            "sourceLineageTag": "_gold_processed_at",
+            "summarizeBy": "none",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_flights",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "fact_flights",
+              "expressionSource": "DirectLake - lh_gold",
+              "schemaName": "dbo"
+            }
+          }
+        ]
+      },
+      {
+        "name": "_Measures",
+        "lineageTag": "41412c8c-2e98-41c1-8331-105a45ed249a",
+        "sourceLineageTag": "[dbo].[measure_table]",
+        "columns": [
+          {
+            "name": "measure_home",
+            "dataType": "int64",
+            "sourceColumn": "measure_home",
+            "formatString": "0",
+            "lineageTag": "f9d1e8b1-9cef-4b0f-b9e8-c94b8fd85107",
+            "sourceLineageTag": "measure_home",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "measure_table",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "measure_table",
+              "expressionSource": "DirectLake - lh_gold",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Diverted Flights",
+            "expression": "SUM(fact_flights[diverted_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Volume",
+            "lineageTag": "0b60bfcc-55ce-40b0-af15-b6e3885fa8d5"
+          },
+          {
+            "name": "Cancelled Flights",
+            "expression": "SUM(fact_flights[cancelled_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Volume",
+            "lineageTag": "e2b9e511-bcae-4457-a60d-be0d40ad457b"
+          },
+          {
+            "name": "Operated Flights",
+            "expression": "SUM(fact_flights[operated_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Volume",
+            "lineageTag": "71a3c507-dfe3-41f4-9d81-3132547d52d4"
+          },
+          {
+            "name": "Scheduled Flights",
+            "expression": "SUM(fact_flights[scheduled_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Volume",
+            "lineageTag": "68de79db-a548-40ea-8ff2-9fbf1f3e9a41"
+          },
+          {
+            "name": "Delay-Eligible Flights",
+            "expression": "SUM(fact_flights[delay_eligible_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Reliability",
+            "lineageTag": "072eed27-0eab-499c-98a0-5144a966acaa"
+          },
+          {
+            "name": "Delayed Flights",
+            "expression": "SUM(fact_flights[arrival_delayed_15_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Reliability",
+            "lineageTag": "e959987e-4a00-4246-9848-1ff8e8aaefcd"
+          },
+          {
+            "name": "On-Time Flights",
+            "expression": "SUM(fact_flights[on_time_arrival_flag])",
+            "formatString": "#,0",
+            "displayFolder": "Reliability",
+            "lineageTag": "fa897e6e-e6a8-4d67-89e8-50cc8192d5a0"
+          },
+          {
+            "name": "On-Time %",
+            "expression": "DIVIDE([On-Time Flights], [Delay-Eligible Flights])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Reliability",
+            "lineageTag": "7f2e7720-afd7-495f-bc07-1d13a8437053"
+          },
+          {
+            "name": "Delayed %",
+            "expression": "DIVIDE([Delayed Flights], [Delay-Eligible Flights])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Reliability",
+            "lineageTag": "97fa0b3e-c7f6-4263-bc12-547b6f9588e5"
+          },
+          {
+            "name": "Cancellation %",
+            "expression": "DIVIDE([Cancelled Flights], [Scheduled Flights])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Volume",
+            "lineageTag": "c2c9dc5a-5305-4d7f-ae1c-765c22cd25c3"
+          },
+          {
+            "name": "Diversion %",
+            "expression": "DIVIDE([Diverted Flights], [Scheduled Flights])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Volume",
+            "lineageTag": "ceb8f673-24dc-468f-9423-22fb3e193144"
+          },
+          {
+            "name": "Avg Departure Delay",
+            "expression": "DIVIDE(SUM(fact_flights[departure_delay_min]), SUM(fact_flights[operated_flag]) + SUM(fact_flights[diverted_flag]))",
+            "formatString": "#,0.0",
+            "displayFolder": "Delay Magnitude",
+            "lineageTag": "fe5a6a02-c5fe-4954-a6e7-31512f878460"
+          },
+          {
+            "name": "Avg Arrival Delay",
+            "expression": "DIVIDE(SUM(fact_flights[arrival_delay_min]), [Delay-Eligible Flights])",
+            "formatString": "#,0.0",
+            "displayFolder": "Delay Magnitude",
+            "lineageTag": "928e692b-f0e9-4403-a637-855fda62ded2"
+          },
+          {
+            "name": "Avg Delay When Late",
+            "expression": "DIVIDE([Total Arrival Delay Minutes], [Delayed Flights])",
+            "formatString": "#,0.0",
+            "displayFolder": "Delay Magnitude",
+            "lineageTag": "8f62cddc-367b-4ab8-b6ea-dcbae45db6fa"
+          },
+          {
+            "name": "Total Arrival Delay Minutes",
+            "expression": "SUM(fact_flights[arrival_delay_nonneg_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Magnitude",
+            "lineageTag": "6e434ce8-0d86-4094-be74-433d7e18261f"
+          },
+          {
+            "name": "Carrier Delay Minutes",
+            "expression": "SUM(fact_flights[carrier_delay_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "4e9a391b-c153-47ab-8101-ca04a14acf28"
+          },
+          {
+            "name": "Weather Delay Minutes",
+            "expression": "SUM(fact_flights[weather_delay_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "12bdae6f-2568-4efd-a423-c6714c12c9ee"
+          },
+          {
+            "name": "NAS Delay Minutes",
+            "expression": "SUM(fact_flights[nas_delay_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "3633f36b-f4ad-4e92-901d-5e8a7f88516e"
+          },
+          {
+            "name": "Security Delay Minutes",
+            "expression": "SUM(fact_flights[security_delay_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "e28b0579-d2a7-4e71-934b-b7c21431823d"
+          },
+          {
+            "name": "Late Aircraft Delay Minutes",
+            "expression": "SUM(fact_flights[late_aircraft_delay_min])",
+            "formatString": "#,0",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "3ac20789-e0c2-4fed-a69e-51139e03093e"
+          },
+          {
+            "name": "Carrier Delay %",
+            "expression": "DIVIDE([Carrier Delay Minutes], [Total Arrival Delay Minutes])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "12a13603-abb1-4951-8ba4-1912970188fb"
+          },
+          {
+            "name": "Weather Delay %",
+            "expression": "DIVIDE([Weather Delay Minutes], [Total Arrival Delay Minutes])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "ff1775ff-6459-4676-8b10-8a21f2fd285d"
+          },
+          {
+            "name": "NAS Delay %",
+            "expression": "DIVIDE([NAS Delay Minutes], [Total Arrival Delay Minutes])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "b180e55d-debd-4634-8da8-2078a923300b"
+          },
+          {
+            "name": "Security Delay %",
+            "expression": "DIVIDE([Security Delay Minutes], [Total Arrival Delay Minutes])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "93531f2f-69cc-4ddf-a536-017b29b16897"
+          },
+          {
+            "name": "Late Aircraft Delay %",
+            "expression": "DIVIDE([Late Aircraft Delay Minutes], [Total Arrival Delay Minutes])",
+            "formatString": "#,0.0%",
+            "displayFolder": "Delay Causes",
+            "lineageTag": "35ed2034-1979-4673-83b2-24751a83d1cc"
+          },
+          {
+            "name": "Avg Taxi Out",
+            "expression": "AVERAGE(fact_flights[taxi_out_min])",
+            "formatString": "#,0.0",
+            "displayFolder": "Operations",
+            "lineageTag": "b2c6b1f6-8a04-4f93-96a7-06243964fc3c"
+          },
+          {
+            "name": "Avg Taxi In",
+            "expression": "AVERAGE(fact_flights[taxi_in_min])",
+            "formatString": "#,0.0",
+            "displayFolder": "Operations",
+            "lineageTag": "dc246b9c-4d6e-4098-93bc-b54205a48c11"
+          },
+          {
+            "name": "Avg Air Time",
+            "expression": "AVERAGE(fact_flights[air_time_min])",
+            "formatString": "#,0.0",
+            "displayFolder": "Operations",
+            "lineageTag": "23aa80eb-c9c3-474c-bf2f-1d0191e6113f"
+          },
+          {
+            "name": "Avg Route Distance",
+            "expression": "AVERAGE(fact_flights[distance_miles])",
+            "formatString": "#,0.0",
+            "displayFolder": "Operations",
+            "lineageTag": "a1777e92-2e95-4bf9-b8ff-e8e21b6a6292"
+          },
+          {
+            "name": "Schedule Padding",
+            "expression": "DIVIDE(SUM(fact_flights[scheduled_elapsed_min]) - SUM(fact_flights[actual_elapsed_min]), [Delay-Eligible Flights])",
+            "formatString": "#,0.0",
+            "displayFolder": "Operations",
+            "lineageTag": "ec7e4016-5f7e-4cf3-a933-01a3a589bb4a"
+          },
+          {
+            "name": "Operated Flights (Like-for-Like)",
+            "expression": "CALCULATE([Operated Flights], KEEPFILTERS(dim_airline[reports_full_period] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "Like-for-Like",
+            "lineageTag": "ce87b8c3-c153-4a05-aeb2-2393428d1ac0"
+          },
+          {
+            "name": "On-Time % (Like-for-Like)",
+            "expression": "CALCULATE([On-Time %], KEEPFILTERS(dim_airline[reports_full_period] = TRUE()))",
+            "formatString": "#,0.0%",
+            "displayFolder": "Like-for-Like",
+            "lineageTag": "0059480b-fd60-453c-80bc-a30bb85b7b9d"
+          },
+          {
+            "name": "Cancellation % (Like-for-Like)",
+            "expression": "CALCULATE([Cancellation %], KEEPFILTERS(dim_airline[reports_full_period] = TRUE()))",
+            "formatString": "#,0.0%",
+            "displayFolder": "Like-for-Like",
+            "lineageTag": "4318928d-bb1e-4a3f-896b-cace417d91bb"
+          },
+          {
+            "name": "Operated Flights PY",
+            "expression": "CALCULATE([Operated Flights], SAMEPERIODLASTYEAR(dim_date[date]))",
+            "formatString": "#,0",
+            "displayFolder": "Time Comparisons",
+            "lineageTag": "f45f8185-2595-408b-8e16-b94f4967f436"
+          },
+          {
+            "name": "On-Time % PY",
+            "expression": "CALCULATE([On-Time %], SAMEPERIODLASTYEAR(dim_date[date]))",
+            "formatString": "#,0.0%",
+            "displayFolder": "Time Comparisons",
+            "lineageTag": "62080bae-6a16-4b9d-8fed-96492bf6abff"
+          },
+          {
+            "name": "Operated Flights YoY %",
+            "expression": "DIVIDE([Operated Flights] - [Operated Flights PY], [Operated Flights PY])",
+            "formatString": "+#,0.0%;-#,0.0%;#,0.0%",
+            "displayFolder": "Time Comparisons",
+            "lineageTag": "a6412f48-5866-4d73-87a3-d453c0d0f10e"
+          },
+          {
+            "name": "On-Time % YoY pts",
+            "expression": "( [On-Time %] - [On-Time % PY] ) * 100",
+            "formatString": "+0.0;-0.0;0.0",
+            "displayFolder": "Time Comparisons",
+            "lineageTag": "5ea0101e-4ac1-47e3-ab50-a0fd55149d06"
+          },
+          {
+            "name": "Operated Flights 2019",
+            "expression": [
+              "VAR PeriodsWithData = SUMMARIZE ( fact_flights, dim_date[month], dim_date[day_of_month] )",
+              "RETURN",
+              "CALCULATE (",
+              "    [Operated Flights],",
+              "    REMOVEFILTERS ( dim_date ),",
+              "    dim_date[year] = 2019,",
+              "    PeriodsWithData",
+              ")"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "vs 2019 Baseline",
+            "lineageTag": "bec520e1-f284-4880-bdb1-61bece4f29cb"
+          },
+          {
+            "name": "On-Time % 2019",
+            "expression": [
+              "VAR PeriodsWithData = SUMMARIZE ( fact_flights, dim_date[month], dim_date[day_of_month] )",
+              "RETURN",
+              "CALCULATE (",
+              "    [On-Time %],",
+              "    REMOVEFILTERS ( dim_date ),",
+              "    dim_date[year] = 2019,",
+              "    PeriodsWithData",
+              ")"
+            ],
+            "formatString": "#,0.0%",
+            "displayFolder": "vs 2019 Baseline",
+            "lineageTag": "c047e5bf-81e0-425d-bd48-976498ad3938"
+          },
+          {
+            "name": "Recovery vs 2019 %",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( dim_date[year] ),",
+              "    DIVIDE ( [Operated Flights] - [Operated Flights 2019], [Operated Flights 2019] )",
+              ")"
+            ],
+            "formatString": "+#,0.0%;-#,0.0%;#,0.0%",
+            "displayFolder": "vs 2019 Baseline",
+            "lineageTag": "f9fa4ff1-e3ed-489e-b3d1-46092bb894a5"
+          },
+          {
+            "name": "On-Time vs 2019 pts",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( dim_date[year] ),",
+              "    ( [On-Time %] - [On-Time % 2019] ) * 100",
+              ")"
+            ],
+            "formatString": "+0.0;-0.0;0.0",
+            "displayFolder": "vs 2019 Baseline",
+            "lineageTag": "1ffa4f2c-86a2-430b-aa80-cc2b30e8cf79"
+          },
+          {
+            "name": "Flights by Destination",
+            "expression": "CALCULATE([Operated Flights], USERELATIONSHIP(fact_flights[dest_airport_key], dim_airport[airport_key]))",
+            "formatString": "#,0",
+            "displayFolder": "Airport Roles",
+            "lineageTag": "e8fe47dd-633e-4652-8890-0f550ff66cf3"
+          },
+          {
+            "name": "On-Time % by Destination",
+            "expression": "CALCULATE([On-Time %], USERELATIONSHIP(fact_flights[dest_airport_key], dim_airport[airport_key]))",
+            "formatString": "#,0.0%",
+            "displayFolder": "Airport Roles",
+            "lineageTag": "ac69aa8d-bb9e-4e0f-9cfb-7e722a529a58"
+          },
+          {
+            "name": "Narrative Overview",
+            "expression": [
+              "VAR Yr = SELECTEDVALUE ( dim_date[year] )",
+              "VAR Flights = [Operated Flights]",
+              "VAR OnTime = [On-Time %]",
+              "VAR Gap2019 = [On-Time vs 2019 pts]",
+              "VAR VolGap2019 = [Recovery vs 2019 %]",
+              "VAR VolYoY = [Operated Flights YoY %]",
+              "VAR OnTimeYoY = [On-Time % YoY pts]",
+              "RETURN",
+              "IF (",
+              "    ISBLANK ( Flights ),",
+              "    \"No flights match the current selection.\",",
+              "    \"In \" & Yr & \", airlines operated \" & FORMAT ( Flights, \"#,0\" ) & \" flights - \"",
+              "        & FORMAT ( ABS ( VolGap2019 ), \"0.0%\" ) & IF ( VolGap2019 >= 0, \" above\", \" below\" ) & \" 2019 and \"",
+              "        & FORMAT ( ABS ( VolYoY ), \"0.0%\" ) & IF ( VolYoY >= 0, \" up\", \" down\" ) & \" on the prior year. \"",
+              "        & FORMAT ( OnTime, \"0.0%\" ) & \" arrived on time: \"",
+              "        & FORMAT ( ABS ( Gap2019 ), \"0.0\" ) & \" points \" & IF ( Gap2019 >= 0, \"better\", \"worse\" ) & \" than 2019, \"",
+              "        & FORMAT ( ABS ( OnTimeYoY ), \"0.0\" ) & \" points \" & IF ( OnTimeYoY >= 0, \"better\", \"worse\" ) & \" than \" & Yr - 1 & \".\"",
+              ")"
+            ],
+            "displayFolder": "Narratives",
+            "lineageTag": "bbd20e18-21d6-49f9-a7bc-912a0f2585ac"
+          },
+          {
+            "name": "Narrative Recovery",
+            "expression": [
+              "VAR Yr = SELECTEDVALUE ( dim_date[year] )",
+              "VAR TotalFlights = [Operated Flights]",
+              "VAR LFL = [Operated Flights (Like-for-Like)]",
+              "VAR VolGap = [Recovery vs 2019 %]",
+              "VAR Share = DIVIDE ( LFL, TotalFlights )",
+              "RETURN",
+              "IF (",
+              "    ISBLANK ( TotalFlights ),",
+              "    \"No flights match the current selection.\",",
+              "    \"Across all carriers, \" & Yr & \" volume was \" & FORMAT ( ABS ( VolGap ), \"0.0%\" )",
+              "        & IF ( VolGap >= 0, \" above\", \" below\" ) & \" 2019. The 12 airlines reporting in every month flew \"",
+              "        & FORMAT ( LFL, \"#,0\" ) & \" of those flights (\" & FORMAT ( Share, \"0.0%\" ) & \" of the total).\"",
+              ")"
+            ],
+            "displayFolder": "Narratives",
+            "lineageTag": "7232b101-8c67-4dac-8797-086e9e8973b8"
+          },
+          {
+            "name": "Narrative Reliability",
+            "expression": [
+              "VAR Yr = SELECTEDVALUE ( dim_date[year] )",
+              "VAR OnTime = [On-Time %]",
+              "VAR Gap = [On-Time vs 2019 pts]",
+              "VAR WhenLate = [Avg Delay When Late]",
+              "VAR TopCause =",
+              "    VAR Causes =",
+              "        DATATABLE ( \"Cause\", STRING, \"Rank\", INTEGER, { { \"late-arriving aircraft\", 1 }, { \"carrier operations\", 2 }, { \"the air traffic system\", 3 }, { \"weather\", 4 } } )",
+              "    VAR LateA = [Late Aircraft Delay %]",
+              "    VAR Carrier = [Carrier Delay %]",
+              "    VAR Nas = [NAS Delay %]",
+              "    VAR Weather = [Weather Delay %]",
+              "    VAR MaxShare = MAX ( MAX ( LateA, Carrier ), MAX ( Nas, Weather ) )",
+              "    RETURN",
+              "        SWITCH (",
+              "            MaxShare,",
+              "            LateA, \"late-arriving aircraft\",",
+              "            Carrier, \"carrier operations\",",
+              "            Nas, \"the air traffic system\",",
+              "            Weather, \"weather\"",
+              "        )",
+              "RETURN",
+              "IF (",
+              "    ISBLANK ( OnTime ),",
+              "    \"No flights match the current selection.\",",
+              "    FORMAT ( OnTime, \"0.0%\" ) & \" of \" & Yr & \" flights arrived on time, \"",
+              "        & FORMAT ( ABS ( Gap ), \"0.0\" ) & \" points \" & IF ( Gap >= 0, \"better\", \"worse\" )",
+              "        & \" than 2019. Late flights ran \" & FORMAT ( WhenLate, \"0\" )",
+              "        & \" minutes behind on average, most often because of \" & TopCause & \".\"",
+              ")"
+            ],
+            "displayFolder": "Narratives",
+            "lineageTag": "c41792b3-70ad-4ab4-9619-9e9992281ce6"
+          },
+          {
+            "name": "Narrative Airports",
+            "expression": [
+              "VAR Yr = SELECTEDVALUE ( dim_date[year] )",
+              "VAR Flights = [Operated Flights]",
+              "VAR Airports = CALCULATE ( DISTINCTCOUNT ( fact_flights[origin_airport_key] ) )",
+              "VAR Taxi = [Avg Taxi Out]",
+              "RETURN",
+              "IF (",
+              "    ISBLANK ( Flights ),",
+              "    \"No flights match the current selection.\",",
+              "    \"Departures in \" & Yr & \" covered \" & FORMAT ( Airports, \"#,0\" ) & \" airports. \"",
+              "        & \"Aircraft spent \" & FORMAT ( Taxi, \"0.0\" ) & \" minutes taxiing out on average before takeoff.\"",
+              ")"
+            ],
+            "displayFolder": "Narratives",
+            "lineageTag": "1c19569b-1c44-4057-b185-fcb3afe7a3c4"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "f5c747b0-cf5d-d5bc-11d4-0b9b838bc670",
+        "fromTable": "fact_flights",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "91d766f4-4063-9f24-ce28-ec0a10045665",
+        "fromTable": "fact_flights",
+        "fromColumn": "airline_key",
+        "toTable": "dim_airline",
+        "toColumn": "airline_key"
+      },
+      {
+        "name": "5e661aa5-dfc9-51ed-0ebe-04d111d8b4b2",
+        "fromTable": "fact_flights",
+        "fromColumn": "origin_airport_key",
+        "toTable": "dim_airport",
+        "toColumn": "airport_key"
+      },
+      {
+        "name": "87f36892-c1ba-5cdc-6348-4156a571b27b",
+        "fromTable": "fact_flights",
+        "fromColumn": "dest_airport_key",
+        "toTable": "dim_airport",
+        "toColumn": "airport_key",
+        "isActive": false
+      }
+    ],
+    "roles": [
+      {
+        "name": "Airline Analyst",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "dim_airline",
+            "filterExpression": "dim_airline[airline_code] = \"AA\""
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "0311255e3dda443c8cccad699e24bff7"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DirectLake - lh_gold",
+        "kind": "m",
+        "expression": [
+          "let",
+          "    Source = AzureStorage.DataLake(\"https://onelake.dfs.fabric.microsoft.com/<WORKSPACE_ID>/<LH_GOLD_ID>\", [HierarchicalNavigation=true])",
+          "in",
+          "    Source"
+        ],
+        "lineageTag": "eb904b5d-b89e-4e0c-a0f6-97efbc2bcc75",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DirectLake - lh_gold\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DirectLakeOnOneLakeInWeb\",\"WebModelingEdit\",\"DaxQueryView_Desktop\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      },
+      {
+        "name": "BestPracticeAnalyzer_IgnoreRules",
+        "value": "{\"RuleIDs\":[]}"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Perspectives\",\"Relationships\",\"Roles\",\"Shared Expressions\",\"Tables\",\"Tables/Calculation Items\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Translations\"]}"
+      }
+    ]
+  }
+}

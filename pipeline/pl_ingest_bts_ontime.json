@@ -1,0 +1,279 @@
+{
+    "name": "pl_ingest_bts_ontime",
+    "properties": {
+        "activities": [
+            {
+                "name": "Lookup control table",
+                "type": "Lookup",
+                "dependsOn": [
+                    {
+                        "activity": "Discover New Months",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "LakehouseTableSource"
+                    },
+                    "firstRowOnly": false,
+                    "datasetSettings": {
+                        "annotations": [],
+                        "linkedService": {
+                            "name": "lh_bronze",
+                            "properties": {
+                                "annotations": [],
+                                "type": "Lakehouse",
+                                "typeProperties": {
+                                    "workspaceId": "<WORKSPACE_ID>",
+                                    "artifactId": "<LH_BRONZE_ID>",
+                                    "rootFolder": "Tables"
+                                }
+                            }
+                        },
+                        "type": "LakehouseTable",
+                        "schema": [],
+                        "typeProperties": {
+                            "schema": "dbo",
+                            "table": "ctl_monthly_load"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Filter pending downloads",
+                "type": "Filter",
+                "dependsOn": [
+                    {
+                        "activity": "Lookup control table",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('Lookup control table').output.value",
+                        "type": "Expression"
+                    },
+                    "condition": {
+                        "value": "@equals(item().download_status, 'pending')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "ForEach pending month",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "Filter pending downloads",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('Filter pending downloads').output.Value",
+                        "type": "Expression"
+                    },
+                    "batchCount": 3,
+                    "activities": [
+                        {
+                            "name": "Copy BTS month",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 3,
+                                "retryIntervalInSeconds": 120,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "typeProperties": {
+                                "source": {
+                                    "type": "BinarySource",
+                                    "storeSettings": {
+                                        "type": "HttpReadSettings",
+                                        "requestMethod": "GET",
+                                        "requestTimeout": "00:10:00"
+                                    },
+                                    "formatSettings": {
+                                        "type": "BinaryReadSettings",
+                                        "compressionProperties": {
+                                            "type": "ZipDeflateReadSettings"
+                                        }
+                                    },
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "type": "Binary",
+                                        "typeProperties": {
+                                            "location": {
+                                                "type": "HttpServerLocation",
+                                                "relativeUrl": {
+                                                    "value": "@item().file_name",
+                                                    "type": "Expression"
+                                                }
+                                            },
+                                            "compression": {
+                                                "type": "ZipDeflate",
+                                                "level": "Optimal"
+                                            }
+                                        },
+                                        "externalReferences": {
+                                            "connection": "<CONN_BTS_PREZIP_ID>"
+                                        }
+                                    }
+                                },
+                                "sink": {
+                                    "type": "BinarySink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobStorageWriteSettings"
+                                    },
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "linkedService": {
+                                            "name": "lh_bronze",
+                                            "properties": {
+                                                "annotations": [],
+                                                "type": "Lakehouse",
+                                                "typeProperties": {
+                                                    "workspaceId": "<WORKSPACE_ID>",
+                                                    "artifactId": "<LH_BRONZE_ID>",
+                                                    "rootFolder": "Files"
+                                                }
+                                            }
+                                        },
+                                        "type": "Binary",
+                                        "typeProperties": {
+                                            "location": {
+                                                "type": "LakehouseLocation",
+                                                "folderPath": {
+                                                    "value": "@concat('raw/bts_ontime/', replace(item().period_key, '-', '_'))",
+                                                    "type": "Expression"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "enableStaging": false
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Load Bronze",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "ForEach pending month",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 2,
+                    "retryIntervalInSeconds": 180,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "<NB_01_BRONZE_INGEST_ID>",
+                    "workspaceId": "<WORKSPACE_ID>",
+                    "sessionTag": "bts_ontime"
+                }
+            },
+            {
+                "name": "Discover New Months",
+                "type": "TridentNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 1,
+                    "retryIntervalInSeconds": 180,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "<NB_04_DISCOVER_MONTHS_ID>",
+                    "workspaceId": "<WORKSPACE_ID>",
+                    "sessionTag": "bts_ontime"
+                }
+            },
+            {
+                "name": "If new data loaded",
+                "type": "IfCondition",
+                "dependsOn": [
+                    {
+                        "activity": "Load Bronze",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@greater(int(activity('Load Bronze').output.result.exitValue), 0)",
+                        "type": "Expression"
+                    },
+                    "ifFalseActivities": [],
+                    "ifTrueActivities": [
+                        {
+                            "name": "Transform Silver",
+                            "type": "TridentNotebook",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 1,
+                                "retryIntervalInSeconds": 180,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "typeProperties": {
+                                "notebookId": "<NB_02_SILVER_TRANSFORM_ID>",
+                                "workspaceId": "<WORKSPACE_ID>",
+                                "sessionTag": "bts_ontime"
+                            }
+                        },
+                        {
+                            "name": "Build Gold",
+                            "type": "TridentNotebook",
+                            "dependsOn": [
+                                {
+                                    "activity": "Transform Silver",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 1,
+                                "retryIntervalInSeconds": 180,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "typeProperties": {
+                                "notebookId": "<NB_03_GOLD_MODEL_ID>",
+                                "workspaceId": "<WORKSPACE_ID>",
+                                "sessionTag": "bts_ontime"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

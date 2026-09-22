@@ -127,9 +127,7 @@ To load the full archive back to 1987, just widen the date range in the control 
 
 ## Tools
 
-Microsoft Fabric (Data Factory, Lakehouse, Spark), PySpark, Delta Lake, Power BI (Direct Lake, DAX, RLS), and Tabular Editor 2 with Best Practice Analyzer.
-
-I used AI assistance to speed up parts of the coding. The design, validation and analysis are my own.
+Microsoft Fabric (Data Factory, Lakehouse, Spark), PySpark, Delta Lake, Power BI (Direct Lake, DAX, RLS), Tabular Editor 2 with Best Practice Analyzer, and AI-assisted development with Claude.
 
 ---
 

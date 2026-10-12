@@ -134,4 +134,4 @@ Microsoft Fabric (Data Factory, Lakehouse, Spark), PySpark, Delta Lake, Power BI
 
 ---
 
-**Muhammad Zia Ul Haq** · Senior BI & Insights Analyst · PL-300 certified
+**Zia Malik**

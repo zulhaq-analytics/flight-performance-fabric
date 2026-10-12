@@ -2,7 +2,9 @@
 
 I wanted to answer a simple question with real data: did U.S. air travel recover from COVID, and is it as reliable now as it was in 2019?
 
-To find out, I built an end-to-end Microsoft Fabric solution over 49.3 million flight records published by the U.S. Bureau of Transportation Statistics (January 2019 to June 2026), from automated ingestion all the way to a Power BI report.
+To find out, I built an end-to-end Microsoft Fabric solution over 49.3 million flight records published by the U.S. Bureau of Transportation Statistics, from automated ingestion all the way to a Power BI report.
+
+The numbers below come from the January 2019 to June 2026 data. The pipeline keeps running, so the live report covers more months than that.
 
 ![Overview page](docs/screenshots/01_report_overview.png)
 
@@ -90,6 +92,7 @@ Each page opens with a short summary sentence written in DAX, which updates when
 - **Fair comparisons with 2019.** When looking at a partial year, the model compares it only with the same calendar days in 2019. Without this, the first half of 2026 looked 53% down instead of 3.9%.
 - **One airport table, two roles.** The same airport table serves as both origin and destination. The destination relationship is inactive and switched on in DAX only when needed.
 - **Honest axes.** Airline on-time rates all sit between about 72% and 82%, so those charts start at 60%. I added data labels so the differences aren't exaggerated.
+- **RLS with Direct Lake.** The model has a demo row-level security role, but Direct Lake connects through single sign-on, so queries run as the person viewing the report. Anyone with access to the Lakehouse could read the tables directly, which means this role demonstrates the technique rather than securing anything. In production the connection would use a fixed identity with SSO turned off, which is what makes the role enforceable.
 - **A known limitation.** Key influencers ranks some small airports highly because it doesn't weight by traffic, so I don't rely on those results. The time-of-day and weekday effects, on the other hand, show up consistently across three separate views.
 
 ## Repository
@@ -123,7 +126,7 @@ To load the full archive back to 1987, just widen the date range in the control 
 
 ## Data source
 
-[Reporting Carrier On-Time Performance](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr), U.S. Bureau of Transportation Statistics, January 2019 to June 2026. It covers domestic flights by U.S. airlines above the BTS reporting threshold. Public domain.
+[Reporting Carrier On-Time Performance](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr), U.S. Bureau of Transportation Statistics, January 2019 onward, with each new month loaded automatically as BTS publishes it. It covers domestic flights by U.S. airlines above the BTS reporting threshold. Public domain.
 
 ## Tools
 
@@ -131,4 +134,4 @@ Microsoft Fabric (Data Factory, Lakehouse, Spark), PySpark, Delta Lake, Power BI
 
 ---
 
-**Muhammad Zia Ul Haq** · Senior Data Analyst
+**Muhammad Zia Ul Haq** · Senior BI & Insights Analyst · PL-300 certified
